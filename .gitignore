@@ -1,0 +1,9 @@
+# Power BI
+*.pbix
+*.pbit
+*.bak
+
+# Excel temporary files
+~$*.xlsx
+~$*.xls
+*.tmp
