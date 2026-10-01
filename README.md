@@ -286,10 +286,10 @@ PowerBI-Grade11-Subject-Performance-Analysis/
 ├── data/
 │   └── Gr11SubjectSch2025.xlsx
 │
-├── dashboard/
+├── SubjectPerformancedashboard/
 │   └── Grade11_Subject_Performance.pbix
 │
-└── screenshots/
+└── images/
     ├── 01-district-overview.png
     ├── 02-subject-insights.png
     └── 03-school-comparison.png
