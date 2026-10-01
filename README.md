@@ -1,87 +1,89 @@
-Project Overview
+# 📊 Grade 11 Subject Performance Analysis | Power BI
 
-This project presents an interactive Power BI dashboard for analysing Grade 11 subject performance across schools, circuits and districts.
+> **Interactive Business Intelligence Dashboard | Education Analytics | Power BI & DAX**
 
-The objective was to transform raw school assessment data into an interactive business intelligence dashboard that allows users to identify performance patterns, compare districts and subjects, and investigate school-level results.
+---
 
-The project demonstrates a complete Power BI workflow, including:
+## **📌 Project Overview**
 
-Data import and cleaning
-Data preparation
-Data validation
-Data visualisation
-DAX measure creation
-KPI development
-Interactive filtering
-Dashboard design
-Performance analysis
-Dataset
+This project presents an **interactive Power BI dashboard designed to analyse Grade 11 academic performance across schools, circuits, districts, subjects, and academic terms.**
 
-The dataset contains Grade 11 subject performance information for schools during 2025.
+The project demonstrates an end-to-end **Business Intelligence workflow**, starting with raw Excel data and progressing through **data cleaning, preparation, analysis, DAX measure development, visualisation, and interactive dashboard design.**
 
-Key fields include:
+The dashboard transforms raw academic results into meaningful visual insights that can be used to understand performance patterns and identify areas requiring further attention.
 
-Column	Description
-District	Education district
-Circuit	Education circuit
-SchoolName	Name of the school
-Subject	Subject being analysed
-Marks	Marks obtained
-TotalMarks	Total available marks
-Percentage	Percentage achieved
-Term	Academic term
+---
 
-The dataset was imported into Power BI from an Excel workbook.
+## **🎯 Project Objective**
 
-1. Data Import and Cleaning
+The main objective was to develop a professional and interactive dashboard capable of answering important performance-related questions, including:
 
-The first stage of the project involved importing the Excel dataset into Power BI Desktop.
+* **How does academic performance differ across districts?**
+* **Which subjects have the highest and lowest average performance?**
+* **How does performance change across academic terms?**
+* **Which schools or subjects require further attention?**
+* **What proportion of results meet the 50% pass threshold?**
+* **What is the performance gap between the highest and lowest results?**
 
-After importing the data, the columns were reviewed to ensure that the dataset was correctly structured and suitable for analysis.
+---
 
-Data cleaning steps
+# **🗂️ Dataset**
 
-The following checks and transformations were performed:
+The analysis was conducted using a Grade 11 school performance dataset for **2025**.
 
-Reviewed column names and renamed fields where necessary.
-Checked the data types of numerical and categorical columns.
-Verified that marks and percentages were stored as numerical values.
-Checked for duplicate records.
-Checked for missing or inconsistent values.
-Reviewed school, district, circuit and subject names for consistency.
-Ensured that the dataset was structured correctly for visualisation and analysis.
+### **Key Data Fields**
 
-The purpose of this stage was to ensure that the dashboard was based on reliable and consistently structured data.
+| Field          | Description           |
+| -------------- | --------------------- |
+| **District**   | Education district    |
+| **Circuit**    | Education circuit     |
+| **SchoolName** | Name of the school    |
+| **Subject**    | Academic subject      |
+| **Term**       | Academic term         |
+| **Marks**      | Marks obtained        |
+| **TotalMarks** | Total available marks |
+| **Percentage** | Percentage achieved   |
 
-2. Data Preparation
+The dataset was originally provided in **Microsoft Excel** and imported into Power BI for preparation and analysis.
 
-After cleaning the dataset, the data was prepared for analysis.
+---
 
-The main analytical fields used in the dashboard were:
+# **🧹 1. Data Cleaning & Preparation**
 
-District
-Circuit
-SchoolName
-Subject
-Term
-Marks
-TotalMarks
-Percentage
+Before developing the dashboard, the raw dataset was reviewed and prepared for analysis.
 
-These fields allowed the dashboard to analyse performance at different levels, from overall district performance down to individual schools and subjects.
+### **Data preparation included:**
 
-3. DAX Measures
+* Reviewing and standardising column names
+* Checking data types
+* Identifying potential duplicate records
+* Checking for missing or inconsistent values
+* Ensuring numerical fields were correctly recognised
+* Validating percentage and marks fields
+* Reviewing categorical fields such as district, circuit, school and subject
+* Preparing the dataset for Power BI visualisations and calculations
 
-DAX was used to create calculated measures that provide dynamic performance indicators.
+This stage was important because **accurate analysis depends on clean and consistently structured data.**
 
-Average Percentage
+---
+
+# **📐 2. Data Analysis & DAX**
+
+To make the dashboard interactive and dynamic, **DAX (Data Analysis Expressions)** was used to create custom measures.
+
+### **Average Percentage**
+
+```DAX
 Average_Percentage = AVERAGE(Sheet2[Percentage])
+```
 
-This measure calculates the average percentage across the selected data.
+Calculates the average percentage across the selected records.
 
-It responds dynamically to filters such as District, Circuit, Term and Subject.
+---
 
-Pass Rate
+### **Pass Rate**
+
+```DAX
 Pass_Rate =
 DIVIDE(
     CALCULATE(
@@ -91,192 +93,190 @@ DIVIDE(
     COUNTROWS(Sheet2),
     0
 )
+```
 
-This measure calculates the percentage of records where the learner achieved at least 50%.
+Calculates the proportion of results achieving **50% or above**.
 
-It provides an overall view of the proportion of results meeting the defined pass threshold.
+---
 
-Performance Gap
+### **Performance Gap**
+
+```DAX
 Performance_Gap =
 MAX(Sheet2[Percentage]) - MIN(Sheet2[Percentage])
+```
 
-This measure calculates the difference between the highest and lowest percentage in the selected data.
+Measures the difference between the highest and lowest percentage within the selected data.
 
-It can be used to understand the spread of performance.
+---
 
-Total Marks Obtained
+### **Total Marks Obtained**
+
+```DAX
 Total_Marks_Obtained = SUM(Sheet2[Marks])
+```
 
-This measure calculates the total marks obtained across the selected records.
+Calculates the total marks obtained across the selected records.
 
-4. Dashboard Design
+---
 
-The dashboard was designed as an interactive multi-page Power BI report.
+# **📊 3. Dashboard Development**
 
-The report contains three main analytical sections:
+The final Power BI report was structured into **three interactive dashboard pages**, each focusing on a different level of academic performance.
 
-Page 1 — District Overview
+---
 
-The District Overview page provides a high-level view of academic performance across districts.
+## **🏫 Page 1 — District Performance Overview**
 
-Visualisations include:
+The District Overview page provides a high-level view of academic performance across different districts.
 
-Average Percentage by District
-Distribution of schools by District
-KPI cards
-Interactive filters
+### **Visualisations include:**
 
-The page allows users to compare district-level performance and identify differences between districts.
+* **Average Percentage by District**
+* **School Distribution by District**
+* **Performance KPIs**
+* **Interactive filtering**
 
-Page 2 — Subject Insights
+The page allows users to compare districts and quickly identify differences in overall academic performance.
 
-The Subject Insights page focuses on performance across different subjects.
+---
 
-Visualisations include:
+## **📚 Page 2 — Subject Performance Analysis**
 
-Average Marks by Subject
-Performance trends by Term
-Subject contribution to total marks
-Subject-level comparisons
+The Subject Insights page focuses on understanding performance across different academic subjects.
 
-This page allows users to investigate which subjects have higher or lower average performance and how performance changes across terms.
+### **Visualisations include:**
 
-Page 3 — School Comparison
+* **Average Marks by Subject**
+* **Performance Trends by Term**
+* **Subject Contribution to Total Marks**
+* **Subject-level comparisons**
 
-The School Comparison page provides more detailed school-level analysis.
+This page allows users to investigate how subjects perform relative to one another and how performance changes across academic terms.
 
-The dashboard includes:
+---
 
-School
-Subject
-Marks
-Percentage
-Conditional formatting
-Performance comparisons
+## **🏢 Page 3 — School-Level Performance**
 
-Conditional formatting is used to highlight results below 40%, making lower-performing areas easier to identify.
+The School Comparison page provides a more detailed view of individual school and subject performance.
 
-5. Interactive Slicers
+### **The analysis includes:**
 
-Interactive slicers were added to allow users to dynamically filter the dashboard.
+* School
+* Subject
+* Marks
+* Percentage
+* Performance comparison
+* Conditional formatting
 
-The main slicers include:
+Results below **40%** are highlighted to make lower-performing areas easier to identify.
 
-District
-Circuit
-Term
-Subject
+---
 
-For example, selecting a particular district updates the dashboard visuals to display information related only to that district.
+# **🎛️ 4. Interactive Dashboard Features**
 
-This allows users to move from an overall view to a more detailed analysis without changing the underlying dataset.
+To make the dashboard dynamic and user-friendly, interactive slicers were incorporated.
 
-6. Key Performance Indicators
+### **Available Filters**
 
-KPI cards were used to present important performance indicators at a glance.
+* **District**
+* **Circuit**
+* **Term**
+* **Subject**
 
-The dashboard focuses on:
+Users can select different combinations of filters and immediately see how the dashboard changes.
 
-Average Percentage
-Pass Rate
-Total Marks Obtained
-Performance Gap
-Best-performing district
-Lowest-performing subject
+For example, selecting a specific district allows the user to investigate the performance of schools and subjects within that district.
 
-These indicators provide a quick summary before users explore the detailed visualisations.
+---
 
-7. Visualisations
+# **📈 5. Visualisation Techniques**
 
-The dashboard uses multiple Power BI visualisation types to communicate different aspects of the data.
+Different visualisation types were selected according to the analytical question being addressed.
 
-Bar Chart
+| Visual           | Purpose                                     |
+| ---------------- | ------------------------------------------- |
+| **Bar Chart**    | Compare average percentage across districts |
+| **Column Chart** | Compare average marks by subject            |
+| **Line Chart**   | Analyse performance trends across terms     |
+| **Donut Chart**  | Show subject contribution to total marks    |
+| **Map**          | Visualise school distribution by district   |
+| **Table**        | Examine detailed school and subject results |
+| **KPI Cards**    | Present important performance indicators    |
 
-Used to compare average percentage across districts.
+The combination of these visualisations allows users to move from **high-level performance summaries to detailed school-level analysis.**
 
-Column Chart
+---
 
-Used to compare average marks across subjects.
+# **🔢 6. Key Performance Indicators**
 
-Line Chart
+The dashboard uses KPI cards to provide a quick overview of important performance measures.
 
-Used to analyse performance trends across academic terms.
+### **Key indicators include:**
 
-Donut Chart
+* **Average Percentage**
+* **Pass Rate**
+* **Total Marks Obtained**
+* **Performance Gap**
+* **Best-performing District**
+* **Lowest-performing Subject**
 
-Used to show the contribution of subjects to total marks.
+These indicators provide a summary of the dataset before users explore the detailed visualisations.
 
-Map
+---
 
-Used to visualise the distribution of schools across districts.
+# **🧭 7. Dashboard Navigation**
 
-Table
+Navigation buttons were implemented to provide a structured user experience.
 
-Used to provide detailed school and subject-level results.
+### **Dashboard Navigation**
 
-KPI Cards
+**District Overview → Subject Insights → School Comparison**
 
-Used to communicate key performance indicators.
+This allows users to move easily between different levels of analysis while maintaining a consistent dashboard experience.
 
-8. Dashboard Navigation
+---
 
-Navigation buttons were incorporated into the report to allow users to move between the main dashboard sections:
+# **🔎 8. Analytical Insights**
 
-District Overview → Subject Insights → School Comparison
+The dashboard can be used to investigate patterns such as:
 
-This creates a more user-friendly dashboard experience and allows users to navigate between different levels of analysis.
+* Differences in academic performance between districts
+* Variation in performance between subjects
+* Changes in performance across academic terms
+* Schools with lower-performing subjects
+* Overall pass rates
+* Differences between the highest and lowest results
 
-9. Key Analytical Questions
+The interactive nature of the dashboard allows these patterns to be explored dynamically by applying different filters.
 
-The dashboard was designed to help answer questions such as:
+---
 
-Which districts have the highest average performance?
-Which subjects have the highest average marks?
-How does performance change between terms?
-Which schools have lower-performing subjects?
-What percentage of results meet the 50% pass threshold?
-How large is the performance gap between the highest and lowest results?
-How does performance change when filtering by district, circuit or subject?
-10. Business Intelligence Skills Demonstrated
+# **🛠️ 9. Tools & Technologies**
 
-This project demonstrates practical experience in:
+### **Business Intelligence**
 
-Power BI
+* **Microsoft Power BI**
 
-Dashboard development
-Interactive reporting
-Data visualisation
-KPI development
-Dashboard navigation
+### **Data Analysis**
 
-DAX
+* **DAX**
+* **Microsoft Excel**
 
-AVERAGE
-SUM
-COUNTROWS
-CALCULATE
-DIVIDE
-MAX
-MIN
+### **Data Skills**
 
-Data Preparation
+* Data Cleaning
+* Data Preparation
+* Data Analysis
+* Data Visualisation
+* KPI Development
+* Interactive Dashboard Design
 
-Data cleaning
-Data validation
-Data type management
-Duplicate checking
+---
 
-Data Analysis
+# **📁 10. Project Structure**
 
-Performance comparison
-Trend analysis
-KPI analysis
-Filtering and segmentation
-11. Tools Used
-Power BI Desktop
-DAX
-Microsoft Excel
-12. Project Structure
+```text
 PowerBI-Grade11-Subject-Performance-Analysis/
 │
 ├── README.md
@@ -290,19 +290,70 @@ PowerBI-Grade11-Subject-Performance-Analysis/
 │   └── Grade11_Subject_Performance.pbix
 │
 └── screenshots/
-    ├── district-overview.png
-    ├── subject-insights.png
-    └── school-comparison.png
-13. Portfolio Purpose
+    ├── 01-district-overview.png
+    ├── 02-subject-insights.png
+    └── 03-school-comparison.png
+```
 
-This project was developed as part of my Data Science and Business Intelligence learning journey.
+---
 
-It demonstrates my ability to take a structured dataset, prepare it for analysis, develop analytical measures using DAX, and communicate findings through an interactive Power BI dashboard.
+# **💡 Skills Demonstrated**
 
-The project forms part of my broader data portfolio, alongside projects involving Python, R, SQL, machine learning and statistical analysis.
+This project demonstrates practical skills in:
 
-Author
+**Data Preparation**
+Cleaning, validating and preparing structured data for analysis.
 
-Andile Brian Sithole
+**Data Analysis**
+Analysing performance across multiple dimensions including district, school, subject and term.
 
-Data Science Graduate
+**DAX**
+Creating calculated measures using functions such as `AVERAGE`, `SUM`, `COUNTROWS`, `CALCULATE`, `DIVIDE`, `MAX` and `MIN`.
+
+**Data Visualisation**
+Selecting appropriate visualisations to communicate different analytical findings.
+
+**Business Intelligence**
+Transforming raw data into an interactive dashboard that supports data-driven analysis.
+
+**Dashboard Design**
+Creating a structured, interactive and user-friendly reporting environment.
+
+---
+
+# **🚀 Portfolio Value**
+
+This project forms part of my broader **Data Science and Business Intelligence portfolio** and demonstrates my ability to move from **raw data to an interactive analytical solution.**
+
+It complements my other projects involving:
+
+* **Python**
+* **R**
+* **SQL**
+* **Machine Learning**
+* **Statistical Analysis**
+* **Power BI**
+
+Together, these projects demonstrate my growing ability to work across different stages of the **data analytics lifecycle**.
+
+---
+
+# **👤 Author**
+
+### **Andile Brian Sithole**
+
+**Data Science Graduate | Data Analytics | Business Intelligence**
+
+🔗 **GitHub:**
+https://github.com/andilebrian672-bit
+
+🔗 **LinkedIn:**
+https://www.linkedin.com/in/andile-brian-sithole-696994237/
+
+---
+
+## **📌 Project Status**
+
+**Completed | Portfolio Project**
+
+The GitHub repository will be updated as additional analysis, dashboard improvements and documentation are added.
